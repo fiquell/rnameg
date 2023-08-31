@@ -1,4 +1,4 @@
-use argparse::{ArgumentParser, List, Store, StoreTrue};
+use argparse::{ArgumentParser, List, Print, Store, StoreTrue};
 use rand::{distributions::Alphanumeric, thread_rng, Rng};
 use std::{char, env, fs::rename, path::PathBuf};
 
@@ -40,6 +40,11 @@ fn main() {
             &["-r", "--recursive"],
             StoreTrue,
             "Recursive",
+        );
+        parser.add_option(
+            &["-v", "--version"],
+            Print(env!("CARGO_PKG_VERSION").to_string()),
+            "Show version",
         );
         parser.parse_args_or_exit();
     }
