@@ -1,6 +1,6 @@
 use argparse::{ArgumentParser, List, Store, StoreTrue};
 use rand::{distributions::Alphanumeric, thread_rng, Rng};
-use std::{char, fs::rename, path::PathBuf};
+use std::{char, env, fs::rename, path::PathBuf};
 
 fn generate_random_names(length: usize) -> String {
     thread_rng()
@@ -83,6 +83,12 @@ fn main() {
             // }
 
             // rename(&current_name, &filenames);
+        } else {
+            eprintln!(
+                "{}: -r not specified; omitting directory '{}'",
+                env!("CARGO_BIN_NAME"),
+                old_path.display()
+            );
         }
 
         if old_path.is_dir() && options.recursive {
