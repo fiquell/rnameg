@@ -31,16 +31,16 @@ fn main() {
         );
         parser
             .refer(&mut options.files)
-            .add_argument("<files>", List, "Files")
+            .add_argument("**/*", List, "Specify a file or directory beforehand")
             .required();
         parser
             .refer(&mut options.length)
-            .add_option(&["-l", "--length"], Store, "Length")
-            .metavar("<length>");
-        parser
-            .refer(&mut options.recursive)
-            .add_option(&["-r", "--recursive"], StoreTrue, "Recursive")
-            .metavar("<recursive>");
+            .add_option(&["-l", "--length"], Store, "Length");
+        parser.refer(&mut options.recursive).add_option(
+            &["-r", "--recursive"],
+            StoreTrue,
+            "Recursive",
+        );
         parser.parse_args_or_exit();
     }
 
