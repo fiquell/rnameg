@@ -1,29 +1,6 @@
 use crate::{generate::generate, options::Options};
 use std::fs::rename;
 
-/// This function takes an `Options` struct as input, which contains a list of files/directories to rename,
-/// desired random name length, and whether the operation should be recursive.
-///
-/// # Arguments
-///
-/// * `options` - Reference to an `Options` struct containing user-defined options.
-///
-/// # Errors
-///
-/// This function can return an error if there is a problem with renaming a file or directory.
-///
-/// # Examples
-///
-/// ```
-/// use options::Options;
-/// use renamer::renamer;
-///
-/// // Parse command-line arguments
-/// let options = Options::parse_args();
-///
-/// // Rename the files and directories based on the provided options
-/// renamer(&options);
-/// ```
 pub fn renamer(options: &Options) {
     for old_path in &options.args {
         let parent_dir = old_path.parent().expect("Failed to get parent directory");
