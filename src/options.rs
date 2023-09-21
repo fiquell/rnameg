@@ -17,7 +17,7 @@ impl Options {
             let mut parser = ArgumentParser::new();
 
             parser.set_description(
-                "A command-line utility for renaming files or directories with random strings",
+                "A command-line utility for renaming a file or directory with a random string",
             );
             parser
                 .refer(&mut args)
@@ -30,17 +30,17 @@ impl Options {
             parser.refer(&mut length).add_option(
                 &["-l", "--length"],
                 Store,
-                "Set string length randomly (default 20)",
+                "Set a random string length (default: 20)",
             );
             parser.refer(&mut directory).add_option(
                 &["-d", "--directory"],
                 StoreTrue,
-                "Enable directory renaming processes",
+                "Enable directory renaming",
             );
             parser.add_option(
                 &["-v", "--version"],
                 Print(env!("CARGO_PKG_VERSION").to_string()),
-                "Show this version information message and exit",
+                "Show this version message and exit",
             );
             parser.parse_args_or_exit();
         }
