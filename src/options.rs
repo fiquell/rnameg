@@ -4,14 +4,14 @@ use std::path::PathBuf;
 pub struct Options {
     pub args: Vec<PathBuf>,
     pub length: usize,
-    pub recursive: bool,
+    pub directory: bool,
 }
 
 impl Options {
     pub fn parse_args() -> Self {
         let mut args = Vec::new();
         let mut length = 20;
-        let mut recursive = false;
+        let mut directory = false;
 
         {
             let mut parser = ArgumentParser::new();
@@ -32,10 +32,10 @@ impl Options {
                 Store,
                 "Set string length randomly (default 20)",
             );
-            parser.refer(&mut recursive).add_option(
-                &["-r", "--recursive"],
+            parser.refer(&mut directory).add_option(
+                &["-d", "--directory"],
                 StoreTrue,
-                "Enable recursive directory processing",
+                "Enable directory renaming processes",
             );
             parser.add_option(
                 &["-v", "--version"],
@@ -48,7 +48,7 @@ impl Options {
         Options {
             args,
             length,
-            recursive,
+            directory,
         }
     }
 }

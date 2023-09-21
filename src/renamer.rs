@@ -30,11 +30,11 @@ pub fn renamer(options: &Options) {
 
         if old_path.is_file() {
             rename_file(old_path, parent_directory, &random_name)
-        } else if old_path.is_dir() && options.recursive {
+        } else if old_path.is_dir() && options.directory {
             rename_directory(old_path, parent_directory, &random_name)
         } else {
             eprintln!(
-                "{}: -r not specified; omitting directory '{}'",
+                "{}: -d not specified; skipping directory '{}'",
                 env!("CARGO_BIN_NAME"),
                 old_path.display()
             );
