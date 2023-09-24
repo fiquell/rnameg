@@ -16,9 +16,7 @@ impl Options {
         {
             let mut parser = ArgumentParser::new();
 
-            parser.set_description(
-                "A command-line utility for renaming a file or directory with a random string",
-            );
+            parser.set_description("Command-line utility for renaming a file or directory");
             parser
                 .refer(&mut args)
                 .add_argument(
